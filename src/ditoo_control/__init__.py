@@ -1,0 +1,5 @@
+"""Ditoo Control – make a Divoom Ditoo Pro react to what you do on your PC."""
+__version__ = "1.0.0"
+__author__ = "Kantaon"
+__author_url__ = "https://github.com/kantaon"
+__repo__ = "https://github.com/kantaon/ditoo-control"

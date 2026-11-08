@@ -1,0 +1,416 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ditoo Control</title>
+<link rel="icon" href="/ui/icon.png">
+<link rel="stylesheet" href="/ui/style.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-overview" viewBox="0 0 24 24"><path d="M3 3h7v9H3zM14 3h7v5h-7zM14 12h7v9h-7zM3 16h7v5H3z"/></symbol>
+    <symbol id="i-gallery" viewBox="0 0 24 24"><path d="M12 2l10 5-10 5L2 7zM2 17l10 5 10-5M2 12l10 5 10-5"/></symbol>
+    <symbol id="i-auto" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></symbol>
+    <symbol id="i-rules" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></symbol>
+    <symbol id="i-game" viewBox="0 0 24 24"><path d="M6 11h4M8 9v4M15 12h.01M18 10h.01M17.3 5H6.7a4 4 0 0 0-3.96 3.43l-.7 5.02A3 3 0 0 0 5 17c1 0 1.9-.5 2.4-1.3L8.5 14h7l1.1 1.7c.5.8 1.4 1.3 2.4 1.3a3 3 0 0 0 2.96-3.55l-.7-5.02A4 4 0 0 0 17.3 5z"/></symbol>
+    <symbol id="i-weather" viewBox="0 0 24 24"><path d="M12 2v2M4.93 4.93l1.41 1.41M20 12h2M19.07 4.93l-1.41 1.41M15.95 12.65a4 4 0 0 0-5.93-4.43M13 22H7a5 5 0 1 1 4.9-6H13a3 3 0 0 1 0 6z"/></symbol>
+    <symbol id="i-ai" viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="12" rx="3"/><path d="M12 8V5M9 14h.01M15 14h.01"/><circle cx="12" cy="4" r="1"/></symbol>
+    <symbol id="i-timer" viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M10 2h4"/></symbol>
+    <symbol id="i-ambient" viewBox="0 0 24 24"><path d="M2 7c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0M2 12c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0M2 17c2.5-2 4.5-2 7 0s4.5 2 7 0 4.5-2 6 0"/></symbol>
+    <symbol id="i-text" viewBox="0 0 24 24"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-3.1-3.1a2 2 0 0 0-2.8 0L6 21"/></symbol>
+    <symbol id="i-viz" viewBox="0 0 24 24"><path d="M4 10v4M8 6v12M12 3v18M16 8v8M20 11v2"/></symbol>
+    <symbol id="i-lamp" viewBox="0 0 24 24"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></symbol>
+    <symbol id="i-off" viewBox="0 0 24 24"><path d="M12 2v10M18.4 6.6a9 9 0 1 1-12.8 0"/></symbol>
+    <symbol id="i-speaker" viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4zM15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/></symbol>
+    <symbol id="i-plug" viewBox="0 0 24 24"><path d="M12 22v-5M9 8V2M15 8V2M18 8v5a6 6 0 0 1-12 0V8z"/></symbol>
+    <symbol id="i-bt" viewBox="0 0 24 24"><path d="M7 7l10 10-5 5V2l5 5L7 17"/></symbol>
+    <symbol id="i-thermo" viewBox="0 0 24 24"><path d="M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0z"/></symbol>
+    <symbol id="i-activity" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4l13 8-13 8z"/></symbol>
+    <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 4v16M16 4v16"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="5" y="5" width="14" height="14" rx="2"/></symbol>
+    <symbol id="i-skip" viewBox="0 0 24 24"><path d="M5 4l10 8-10 8zM19 5v14"/></symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5M5 21h14"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></symbol>
+    <symbol id="i-key" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M7 14h10"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24"><path d="M3 12a9 9 0 0 1 15.5-6.3L21 8M21 3v5h-5M21 12a9 9 0 0 1-15.5 6.3L3 16M3 21v-5h5"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9M10.3 21a1.94 1.94 0 0 0 3.4 0"/></symbol>
+    <symbol id="i-device" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="15" rx="3"/><rect x="7" y="6" width="10" height="8" rx="1"/><path d="M8 21h8"/></symbol>
+    <symbol id="i-desk" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 2v2M10 2v2M14 2v2"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="i-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.6 2.6 0 0 1 5 .9c0 1.7-2.5 2.3-2.5 3.9M12 17h.01"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol>
+    <symbol id="i-bug" viewBox="0 0 24 24"><rect x="7" y="6" width="10" height="14" rx="5"/><path d="M12 10v10M3 13h4M17 13h4M4 7l3 2M20 7l-3 2M4 19l3-2M20 19l-3-2M9 4l1.5 2M15 4l-1.5 2"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+    <symbol id="i-power" viewBox="0 0 24 24"><path d="M12 2v10M18.4 6.6a9 9 0 1 1-12.8 0"/></symbol>
+  </defs>
+</svg>
+
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <img src="/ui/icon.png" width="28" height="28" alt="">
+      <div><div class="brand-name">Ditoo Control</div><div class="brand-sub">for Divoom Ditoo Pro</div></div>
+    </div>
+    <nav class="nav" aria-label="Main navigation">
+      <button data-page="overview" class="active"><svg><use href="#i-overview"/></svg><span>Overview</span></button>
+      <button data-page="gallery"><svg><use href="#i-gallery"/></svg><span>Scene gallery</span></button>
+      <button data-page="rules"><svg><use href="#i-rules"/></svg><span>Automation</span></button>
+      <button data-page="games"><svg><use href="#i-game"/></svg><span>Games</span></button>
+      <button data-page="content"><svg><use href="#i-image"/></svg><span>Content</span></button>
+      <button data-page="sound"><svg><use href="#i-speaker"/></svg><span>Sounds</span></button>
+      <button data-page="integrations"><svg><use href="#i-plug"/></svg><span>Integrations</span></button>
+      <button data-page="settings"><svg><use href="#i-device"/></svg><span>Settings</span></button>
+      <button data-page="help"><svg><use href="#i-help"/></svg><span>Help</span></button>
+    </nav>
+    <div class="conn" id="conn">
+      <div class="conn-row"><span class="dot" id="connDot"></span><div><div class="conn-title">Ditoo Pro</div><div class="conn-sub" id="connSub">Connecting…</div></div></div>
+      <button class="btn ghost sm" id="connBtn"><svg><use href="#i-refresh"/></svg><span id="connBtnText">Reconnect</span></button>
+    </div>
+    <button class="credit" data-open="author" title="github.com/kantaon"><span>Made by</span> <b>Kantaon</b></button>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div>
+        <h1 id="pageTitle">Overview</h1>
+        <p class="subtitle" id="pageSub">What Ditoo shows right now and why</p>
+      </div>
+      <div class="chips" id="chips"></div>
+    </header>
+
+    <div class="banner hidden" id="banner" role="alert">
+      <svg><use href="#i-info"/></svg>
+      <div class="banner-body"><b id="bannerTitle"></b><span id="bannerText"></span></div>
+      <button class="btn primary sm" id="bannerAction"></button>
+    </div>
+
+    <!-- ===================== OVERVIEW ===================== -->
+    <section class="page active" id="page-overview">
+      <div class="ov-grid">
+        <div class="card stage-card">
+          <div class="stage" id="stage">
+            <div class="ditoo">
+              <div class="ditoo-ears"><i></i><i></i></div>
+              <div class="ditoo-screen"><canvas id="mainLed" width="320" height="320" aria-label="Ditoo display preview"></canvas></div>
+              <div class="ditoo-keys" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </div>
+          <div class="now">
+            <div class="now-label" id="nowLabel">—</div>
+            <div class="now-reason"><svg><use href="#i-info"/></svg><span id="nowReason">—</span></div>
+          </div>
+          <div class="legend" id="legend" aria-label="What the display shows"></div>
+          <div class="bright-row">
+            <svg class="ic"><use href="#i-sun"/></svg>
+            <input type="range" min="5" max="100" step="1" id="brightness" aria-label="Display brightness">
+            <span class="val" id="brightnessVal">70 %</span>
+          </div>
+          <div class="pomo-ctl hidden" id="pomoCtl">
+            <div class="pomo-info"><svg class="ic"><use href="#i-timer"/></svg><span id="pomoText">—</span></div>
+            <div class="btn-row">
+              <button class="btn sm primary hidden" data-pomo="start" id="pomoGo"><svg><use href="#i-play"/></svg><span>Start</span></button>
+              <button class="btn icon" id="pomoToggle" aria-label="Pause"><svg><use href="#i-pause"/></svg></button>
+              <button class="btn icon" data-pomo="skip" aria-label="Skip phase" title="Skip phase"><svg><use href="#i-skip"/></svg></button>
+              <button class="btn icon" data-pomo="stop" id="pomoStop" aria-label="Stop and turn the timer off" title="Stop and turn the timer off"><svg><use href="#i-stop"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+        <div class="ov-right">
+          <div class="card">
+            <div class="card-head"><h2 data-help="Automatic = the app picks the screen based on what you are doing. Any other mode locks the display to that one thing until you pick another.">Mode</h2><span class="hint" id="modesHint"></span></div>
+            <div class="modes" id="modes" role="group" aria-label="Display mode"></div>
+          </div>
+          <div class="tiles" id="tiles"></div>
+        </div>
+      </div>
+
+      <div class="ov-bottom">
+        <div class="card">
+          <div class="card-head"><h2 data-help="Status of Claude Code and Codex, reported by their hooks (see Integrations). Working = solving a task, Waiting for you = needs approval or an answer, Done = finished.">AI agents</h2><span class="badge" id="aiBadge">idle</span></div>
+          <div class="ai-sources" id="aiSources"></div>
+          <ul class="timeline" id="aiTimeline"></ul>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-help="Latest app events: connection, mode changes, detected games, agent signals.">Activity</h2></div>
+          <ul class="log" id="activity"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GALLERY ===================== -->
+    <section class="page" id="page-gallery">
+      <p class="lead">Every scene below is rendered live from the app. Try one on your Ditoo for 12 seconds, or make it the current mode.</p>
+      <div class="gallery" id="gallery"></div>
+    </section>
+
+    <!-- ===================== RULES ===================== -->
+    <section class="page" id="page-rules">
+      <div class="cols">
+        <div class="card">
+          <div class="card-head"><h2 data-help="In Automatic mode the rules are checked from top to bottom every second. The display shows the first rule that applies – it is highlighted.">Automation priorities</h2><span class="hint">Top to bottom – the first one that applies wins</span></div>
+          <ol class="rules" id="rulesList"></ol>
+        </div>
+        <div class="stack">
+          <div class="card">
+            <div class="card-head"><h2 data-help="When no game, agent or pomodoro is running, the display cycles through these screens. After 5 pm the weather also shows tomorrow's forecast.">When nothing is happening</h2><span class="hint">Seconds on screen, 0 = off</span></div>
+            <div id="idleList"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Dims the display at night so it doesn't light up the room. Sounds can be silenced at night on the Sounds page."><svg class="ic"><use href="#i-moon"/></svg>Night mode</h2><button class="switch" role="switch" id="nightSwitch" aria-label="Night mode"></button></div>
+            <div class="form-grid">
+              <label><span>From</span><select id="nightStart"></select></label>
+              <label><span>To</span><select id="nightEnd"></select></label>
+            </div>
+            <div class="field-range"><span>Night brightness</span><input type="range" min="0" max="60" id="nightBright" aria-label="Night brightness"><span class="val" id="nightBrightVal"></span></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Switches the LEDs completely off when you leave the PC, which saves the Ditoo's battery the most. It lights up again as soon as you touch the mouse or keyboard. Never happens while a game is running."><svg class="ic"><use href="#i-power"/></svg>When you're away</h2><button class="switch" role="switch" id="awaySwitch" aria-label="Display off when you're away"></button></div>
+            <div class="field-range"><span>After</span><input type="range" min="1" max="60" id="awayMinutes" aria-label="Minutes without input"><span class="val" id="awayMinutesVal"></span></div>
+            <div class="row-between"><span>Right away when the PC is locked (Win+L)</span><button class="switch" role="switch" id="awayLock" aria-label="Display off when the PC is locked"></button></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Warning = the number on the display turns orange. Critical = Automatic switches to a blinking warning and plays a sound. Up to 15 °C below the warning the number is green, in between yellow."><svg class="ic"><use href="#i-thermo"/></svg>Temperature limits</h2></div>
+            <div class="thresholds" id="thresholds"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Work anywhere in Windows, even in games. A/D steps through the screens that fit what you are doing (context), S returns to Automatic, W toggles brightness."><svg class="ic"><use href="#i-key"/></svg>Keyboard shortcuts</h2><button class="switch" role="switch" id="hkSwitch" aria-label="Keyboard shortcuts"></button></div>
+            <div class="hotkeys" id="hotkeys"></div>
+            <p class="note">Ctrl + Alt acts as AltGr on many European keyboards, so the shortcuts use Ctrl + Shift + Alt. Changes apply after restarting the app.</p>
+            <div class="contexts" id="contexts"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== GAMES ===================== -->
+    <section class="page" id="page-games">
+      <div class="cols">
+        <div class="stack">
+          <div class="card game-now" id="gameNow"></div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="When one of these programs is running, Ditoo switches to the gaming HUD. The name is only for display – the .exe file name is what counts.">My games</h2><span class="hint" id="gameCount"></span></div>
+            <form class="add-row" id="gameForm">
+              <input id="gameExe" placeholder="game.exe" aria-label="Executable file" required>
+              <input id="gameName" placeholder="Name (optional)" aria-label="Game name">
+              <button class="btn primary" type="submit"><svg><use href="#i-plus"/></svg><span>Add</span></button>
+            </form>
+            <ul class="list" id="gameList"></ul>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="card">
+            <div class="card-head"><h2 data-help="Detects games that are not on your list: a full-screen window that RivaTuner measures FPS for. Adding the game to the list is more reliable.">Automatic detection</h2><button class="switch" role="switch" id="autoDetect" aria-label="Automatic game detection"></button></div>
+            <p class="note">Below are the apps RivaTuner is tracking right now – add any of them with one click.</p>
+            <ul class="list" id="candidates"></ul>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Apps RivaTuner tracks that are not games (browsers, Discord…). Automatic detection skips them.">Ignored apps</h2></div>
+            <div class="chips-edit" id="ignoreList"></div>
+            <form class="add-row" id="ignoreForm"><input id="ignoreExe" placeholder="app.exe" aria-label="Ignored app" required><button class="btn" type="submit"><svg><use href="#i-plus"/></svg><span>Add</span></button></form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTENT ===================== -->
+    <section class="page" id="page-content">
+      <div class="cols">
+        <div class="stack">
+          <div class="card">
+            <div class="card-head"><h2 data-help="The image is cropped to a square and scaled to 16×16 px. Pixel art that is already 16×16 looks best. A GIF can have up to 60 frames.">Images and GIFs</h2></div>
+            <label class="drop" id="drop" tabindex="0">
+              <input type="file" id="fileInput" accept="image/png,image/gif,image/jpeg,image/webp,image/bmp" hidden>
+              <svg><use href="#i-upload"/></svg>
+              <strong>Drop an image or GIF here</strong>
+              <span>or click to choose · cropped to a 16 × 16 square · up to 60 frames</span>
+            </label>
+            <div class="media-grid" id="mediaGrid"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Decorative animations without information – for the background, music or the night. Click one to select and show it.">Ambient effect</h2></div>
+            <div class="fx-grid" id="fxGrid"></div>
+          </div>
+        </div>
+        <div class="stack">
+          <div class="card">
+            <div class="card-head"><h2 data-help="Show = the text stays on the display as a mode. Notify = the text scrolls once with a coloured frame, then the display returns to what it was showing.">Scrolling text</h2></div>
+            <div class="add-row">
+              <input id="textInput" maxlength="60" placeholder="Type a message" aria-label="Display text">
+              <input type="color" id="textColor" aria-label="Text colour">
+            </div>
+            <div class="row-between"><span>Rainbow colours</span><button class="switch" role="switch" id="rainbow" aria-label="Rainbow text"></button></div>
+            <div class="btn-row">
+              <button class="btn primary" id="textShow"><svg><use href="#i-play"/></svg><span>Show</span></button>
+              <button class="btn" id="textNotify"><svg><use href="#i-bell"/></svg><span>Send as notification</span></button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Animated = big digits from this app, seconds fill the sides. Native = Ditoo's built-in clock (keeps running without the PC).">Clock</h2></div>
+            <div class="seg" id="clockType" role="radiogroup" aria-label="Clock type">
+              <button data-v="animated" role="radio">Animated</button>
+              <button data-v="native" role="radio">Native Divoom</button>
+            </div>
+            <div class="row-between"><span>Colour</span><input type="color" id="clockColor" aria-label="Clock colour"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="The whole display glows in one colour – a night light or desk backlight.">Lamp</h2></div>
+            <div class="swatches" id="lampSwatches"></div>
+            <div class="row-between"><span>Custom colour</span><input type="color" id="lampColor" aria-label="Lamp colour"></div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="A focus technique: 25 min of work, 5 min break, repeat. The timer only starts with Start, and Stop turns it off completely.">Pomodoro</h2></div>
+            <div class="form-grid">
+              <label><span>Focus (min)</span><input type="number" min="1" max="120" id="pomoFocus"></label>
+              <label><span>Break (min)</span><input type="number" min="1" max="60" id="pomoBreak"></label>
+            </div>
+            <div class="btn-row"><button class="btn primary" id="pomoStart"><svg><use href="#i-play"/></svg><span>Start pomodoro</span></button></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SOUND ===================== -->
+    <section class="page" id="page-sound">
+      <div class="cols">
+        <div class="card">
+          <div class="card-head"><h2 data-help="Sound plays only through the Ditoo speaker, not your PC speakers. Ditoo must be connected in Windows as an audio device (DitooPro-Audio).">Sounds from Ditoo</h2><button class="switch" role="switch" id="soundSwitch" aria-label="Sounds"></button></div>
+          <p class="note">Short 8-bit jingles play straight from the Ditoo speaker. Your default audio output (PC speakers) stays untouched.</p>
+          <div class="field-range"><span>Volume</span><input type="range" min="5" max="100" id="volume" aria-label="Volume"><span class="val" id="volumeVal"></span></div>
+          <div class="row-between"><span>Silent while gaming</span><button class="switch" role="switch" id="muteGame" aria-label="Silent while gaming"></button></div>
+          <div class="row-between"><span>Silent at night</span><button class="switch" role="switch" id="quietNight" aria-label="Silent at night"></button></div>
+          <div class="btn-row"><button class="btn ghost sm" data-open="sound"><svg><use href="#i-speaker"/></svg><span>Windows sound settings</span></button></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-help="Which events play a jingle. Press Play to hear it now.">Events</h2></div>
+          <ul class="list" id="soundEvents"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== INTEGRATIONS ===================== -->
+    <section class="page" id="page-integrations">
+      <div class="int-grid" id="intGrid"></div>
+      <div class="card">
+        <div class="card-head"><h2 data-help="The app only listens on this PC (127.0.0.1). Any script can send text to the display or set an agent's status.">Your own scripts and webhooks</h2><span class="hint">Local API on 127.0.0.1</span></div>
+        <p class="note">Anything on your PC can send a notification or a status – tests, builds, GitHub Actions via <code>gh run watch</code>, anything.</p>
+        <div class="code-list" id="apiExamples"></div>
+      </div>
+    </section>
+
+    <!-- ===================== SETTINGS ===================== -->
+    <section class="page" id="page-settings">
+      <div class="cols">
+        <div class="stack">
+          <div class="card">
+            <div class="card-head"><h2 data-help="Ditoo is controlled over its Bluetooth serial channel (RFCOMM). The address and channel are found automatically – change them only for a different Ditoo."><svg class="ic"><use href="#i-bt"/></svg>Bluetooth</h2><span class="badge" id="devBadge"></span></div>
+            <div class="form-grid">
+              <label><span>MAC address</span><input id="mac" spellcheck="false" placeholder="automatic"></label>
+              <label><span>RFCOMM channel</span><input id="port" type="number" min="1" max="30"></label>
+            </div>
+            <div class="btn-row">
+              <button class="btn primary" id="devSave"><svg><use href="#i-check"/></svg><span>Save and connect</span></button>
+              <button class="btn" id="devDisconnect"><span>Disconnect</span></button>
+              <button class="btn ghost" id="devFind"><svg><use href="#i-search"/></svg><span>Find automatically</span></button>
+            </div>
+            <div class="callout">
+              <svg><use href="#i-info"/></svg>
+              <div><strong>Display not reacting?</strong> Ditoo Pro only listens to the first device that connects. Disconnect it from your phone (turn off Bluetooth on the phone or close the Divoom app) and restart Ditoo.</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2 data-help="Free weather from Open-Meteo, refreshed every 15 minutes for the chosen city."><svg class="ic"><use href="#i-weather"/></svg>Weather location</h2><span class="hint" id="cityNow"></span></div>
+            <form class="add-row" id="cityForm"><input id="cityQuery" placeholder="Search for a city" aria-label="City"><button class="btn" type="submit"><svg><use href="#i-search"/></svg><span>Search</span></button></form>
+            <ul class="list" id="cityResults"></ul>
+          </div>
+          <div class="card">
+            <div class="card-head"><h2><svg class="ic"><use href="#i-globe"/></svg>App</h2><span class="hint" id="appVersion"></span></div>
+            <div class="row-between"><span>Language</span>
+              <div class="seg" id="langSeg" role="radiogroup" aria-label="Language">
+                <button data-v="auto" role="radio">Auto</button><button data-v="en" role="radio">English</button><button data-v="cs" role="radio">Čeština</button>
+              </div>
+            </div>
+            <div class="row-between"><span>Author</span><button class="link" data-open="author">Kantaon · github.com/kantaon</button></div>
+            <div class="row-between"><span>Source code</span><button class="link" data-open="repo">github.com/kantaon/ditoo-control</button></div>
+            <div class="btn-row">
+              <button class="btn" id="runWizard"><svg><use href="#i-auto"/></svg><span>Run setup again</span></button>
+              <button class="btn ghost" data-open="config"><svg><use href="#i-folder"/></svg><span>Open settings folder</span></button>
+              <button class="btn ghost" data-open="issues"><svg><use href="#i-bug"/></svg><span>Report a problem</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2 data-help="Detailed event log – useful when troubleshooting the connection.">Log</h2></div>
+          <ul class="log tall" id="fullLog"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== HELP ===================== -->
+    <section class="page" id="page-help">
+      <div class="card">
+        <div class="card-head"><h2>How to read the display</h2><span class="hint">Every screen explained</span></div>
+        <div class="help-screens" id="helpScreens"></div>
+      </div>
+      <div class="cols" style="margin-top:18px">
+        <div class="card">
+          <div class="card-head"><h2>Colours</h2></div>
+          <ul class="legend-list" id="helpColors"></ul>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>How Automatic works</h2></div>
+          <ol class="help-steps" id="helpAuto"></ol>
+        </div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <div class="card-head"><h2>Modes</h2></div>
+        <div class="help-modes" id="helpModes"></div>
+      </div>
+      <div class="cols" style="margin-top:18px">
+        <div class="card">
+          <div class="card-head"><h2>Keyboard shortcuts</h2></div>
+          <div id="helpKeys"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Troubleshooting</h2></div>
+          <div class="faq" id="helpFaq"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<!-- ===================== SETUP WIZARD ===================== -->
+<div class="wizard hidden" id="wizard" role="dialog" aria-modal="true" aria-labelledby="wzTitle">
+  <div class="wz-card">
+    <div class="wz-steps" id="wzSteps" aria-hidden="true"></div>
+    <div class="wz-body" id="wzBody"></div>
+    <div class="wz-foot">
+      <button class="btn ghost" id="wzBack"><span>Back</span></button>
+      <span class="wz-spacer"></span>
+      <button class="btn ghost" id="wzSkip"><span>Skip setup</span></button>
+      <button class="btn primary" id="wzNext"><span>Continue</span></button>
+    </div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="/ui/i18n.js"></script>
+<script src="/ui/app.js"></script>
+</body>
+</html>
