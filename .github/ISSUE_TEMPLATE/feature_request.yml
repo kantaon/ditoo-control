@@ -1,0 +1,15 @@
+name: Feature or scene idea
+description: Suggest a new scene, integration or improvement
+labels: [enhancement]
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: What should Ditoo show or do, and when?
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why would it be useful?

@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ditoo-control"
+dynamic = ["version"]
+description = "Make a Divoom Ditoo Pro react to what you do on your Windows PC: gaming HUD, PC monitor, Claude Code / Codex status, weather and more."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+requires-python = ">=3.11"
+authors = [{ name = "Kantaon" }]
+keywords = ["divoom", "ditoo", "pixel", "bluetooth", "led", "hud", "claude-code", "codex", "afterburner", "rtss"]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: Win32 (MS Windows)",
+  "Intended Audience :: End Users/Desktop",
+  "Operating System :: Microsoft :: Windows :: Windows 10",
+  "Operating System :: Microsoft :: Windows :: Windows 11",
+  "Programming Language :: Python :: 3",
+  "Topic :: Games/Entertainment",
+  "Topic :: System :: Hardware",
+  "Topic :: System :: Monitoring",
+]
+dependencies = [
+  "pywebview>=5.0",
+  "pystray>=0.19",
+  "pillow>=10.0",
+  "sounddevice>=0.4.6",
+  "numpy>=1.26",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.6", "pyinstaller>=6.6"]
+
+[project.urls]
+Homepage = "https://github.com/kantaon/ditoo-control"
+Issues = "https://github.com/kantaon/ditoo-control/issues"
+Changelog = "https://github.com/kantaon/ditoo-control/blob/main/CHANGELOG.md"
+
+[project.gui-scripts]
+ditoo-control = "ditoo_control.app:main"
+
+[tool.hatch.version]
+path = "src/ditoo_control/__init__.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ditoo_control"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 130
+target-version = "py311"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM"]
+ignore = ["E741", "SIM105", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/ditoo_control/i18n.py" = ["E501"]
+"src/ditoo_control/sounds.py" = ["E501"]
+"scripts/check_i18n.py" = ["E501"]

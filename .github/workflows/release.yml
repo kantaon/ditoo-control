@@ -1,0 +1,74 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install
+        run: pip install -e ".[dev]"
+
+      - name: Test
+        run: pytest
+
+      - name: Version
+        id: v
+        shell: bash
+        run: echo "version=$(python -c 'import sys; sys.path.insert(0, "src"); import ditoo_control as d; print(d.__version__)')" >> "$GITHUB_OUTPUT"
+
+      - name: Build executable
+        run: |
+          python packaging/make_version_info.py
+          pyinstaller packaging/DitooControl.spec --noconfirm --distpath dist --workpath build
+
+      - name: Smoke test executable
+        shell: bash
+        run: ./dist/DitooControl/DitooControl.exe --version
+
+      - name: Build installer
+        run: |
+          choco install innosetup --no-progress -y
+          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" /DAppVersion=${{ steps.v.outputs.version }} packaging\installer.iss
+
+      - name: Portable zip
+        shell: pwsh
+        run: Compress-Archive -Path dist\DitooControl\* -DestinationPath DitooControl-portable.zip
+
+      - name: Checksums
+        shell: pwsh
+        run: |
+          Get-FileHash packaging\Output\DitooControl-Setup.exe, DitooControl-portable.zip -Algorithm SHA256 |
+            ForEach-Object { "{0}  {1}" -f $_.Hash.ToLower(), (Split-Path $_.Path -Leaf) } | Out-File -Encoding ascii SHA256SUMS.txt
+
+      - name: Release notes
+        shell: bash
+        run: |
+          python - <<'EOF'
+          import re, pathlib
+          text = pathlib.Path("CHANGELOG.md").read_text(encoding="utf-8")
+          m = re.search(r"^## \[?${{ steps.v.outputs.version }}\]?.*?\n(.*?)(?=^## |\Z)", text, re.S | re.M)
+          pathlib.Path("NOTES.md").write_text((m.group(1).strip() if m else "") + "\n", encoding="utf-8")
+          EOF
+
+      - name: Publish
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Ditoo Control ${{ steps.v.outputs.version }}
+          body_path: NOTES.md
+          files: |
+            packaging/Output/DitooControl-Setup.exe
+            DitooControl-portable.zip
+            SHA256SUMS.txt

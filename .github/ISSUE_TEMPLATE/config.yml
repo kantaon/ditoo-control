@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Display not reacting?
+    url: https://github.com/kantaon/ditoo-control#faq
+    about: Most connection problems are solved in the FAQ – usually the phone is still connected to the Ditoo.
